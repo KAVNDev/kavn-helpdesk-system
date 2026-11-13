@@ -2,7 +2,7 @@
 
 namespace Helpdesk.Api.DTOs;
 
-public class CreatTicketDto
+public class CreateTicketDto
 {
     [Required]
     [StringLength(200, MinimumLength = 5)]
