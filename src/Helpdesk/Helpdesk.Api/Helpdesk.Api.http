@@ -1,6 +1,38 @@
-@Helpdesk.Api_HostAddress = http://localhost:5053
+@Helpdesk.Api_HostAddress = https://localhost:7283
 
-GET {{Helpdesk.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### List all tickets
+GET {{Helpdesk.Api_HostAddress}}/api/tickets
+Acccept: application/json
 
-###
+### Create a ticket
+POST {{Helpdesk.Api_HostAddress}}/api/tickets
+Content-Type: application/json
+
+{
+  "title": "VPN keeps disconnecting",
+  "description": "The VPN drops every 10 minute whle working from home.",
+  "categoryId": 3,
+  "priorityId": 3
+}
+
+### Create a ticket with bad data
+POST {{Helpdesk.Api_HostAddress}}/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Hi",
+  "description": "Short",
+  "categoryId": 0,
+  "priorityId": 3
+}
+
+### Create a ticket with a category that does not exist
+POST {{Helpdesk.Api_HostAddress}}/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Testing a bad category",
+  "description": "Category 99 does not exist in the database.",
+  "categoryId": 99,
+  "priorityId": 3
+}
